@@ -4,7 +4,10 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput, Button, Alert
+  TextInput,
+  Button,
+  Alert,
+  ActivityIndicator
 } from 'react-native';
 
 class LoginScreen extends React.Component {
@@ -15,45 +18,52 @@ class LoginScreen extends React.Component {
     }
   }
 
-  state = { username: '', password: '' }
+  state = { username: '', password: '', loading: false }
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          style={styles.editing}
-          onChangeText={(u) => this.setState({ username: u })}
-          keyboardType={"email-address"}
-          placeholder={"Email/Username"}
-          returnKeyType={"next"}
-        />
-        <TextInput
-          style={styles.editing}
-          onChangeText={(p) => this.setState({ password: p })}
-          placeholder={"Password"}
-          returnKeyType={"done"}
-          secureTextEntry={true}
-        />
-        <Button
-          onPress={this.onLogin}
-          title="Login / Register"
-          color="#841584"
-        />
+        <View style={this.state.loading ? styles.hidden : {}}>
+          <TextInput
+            style={styles.editing}
+            onChangeText={(u) => this.setState({ username: u })}
+            keyboardType={"email-address"}
+            placeholder={"Email/Username"}
+            returnKeyType={"next"}
+          />
+          <TextInput
+            style={styles.editing}
+            onChangeText={(p) => this.setState({ password: p })}
+            placeholder={"Password"}
+            returnKeyType={"done"}
+            secureTextEntry={true}
+          />
+          <Button
+            onPress={this.onLogin}
+            title="Login / Register"
+            color="#841584"
+          />
+        </View>
+        <View style={this.state.loading ? {} : styles.hidden}>
+          <ActivityIndicator
+            size="large"
+            color="#0000ff"
+          />
+        </View>
       </View>
     )
   }
   onLogin = () => {
+    this.setState({ loading: true })
     Alert.alert(
       'Alert ti lert',
       this.state.username + ' ' + this.state.password,
       [
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
         {text: 'OK', onPress: () => console.log('OK Pressed')},
       ]
     )
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -64,6 +74,10 @@ const styles = StyleSheet.create({
   },
   editing: {
     "height": 48
+  },
+  hidden: {
+    width: 0,
+    height: 0,
   },
 });
 

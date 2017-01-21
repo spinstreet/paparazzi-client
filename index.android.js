@@ -55,18 +55,6 @@ class App extends Component {
   }
 }
 
-// export default class paparazziClient extends Component {
-//   render() {
-//     return (
-//         <View style={styles.container}>
-//           <Text style={styles.welcome}>
-//             Paparazzi base
-//           </Text>
-//         </View>
-//     );
-//   }
-// }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
