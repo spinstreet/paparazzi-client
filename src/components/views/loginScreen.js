@@ -28,3 +28,5 @@ class LoginScreen extends React.Component {
     this.props.naviation
   }
 }
+
+export default LoginScreen

@@ -23,4 +23,11 @@ class ProfileScreen extends React.Component {
       </View>
     )
   }
+
+  _goBackHome = () => {
+    this.props.naviation
+  }
 }
+
+
+export default ProfileScreen

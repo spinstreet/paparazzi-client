@@ -17,9 +17,9 @@ import rootReducer from './src/reducers';
 import thunk from 'redux-thunk';
 
 /* Views */
-import { homeScreen } from './src/components/views/homeScreen'
-import { profileScreen } from './src/components/views/profileScreen'
-import { loginScreen } from './src/components/views/loginScreen'
+import HomeScreen from './src/components/views/homeScreen'
+import ProfileScreen from './src/components/views/profileScreen'
+import LoginScreen from './src/components/views/loginScreen'
 
 
 /* Navigiation */
@@ -28,6 +28,7 @@ import {
   NavigationProvider,
   StackNavigation,
 } from '@exponent/ex-navigation';
+
 
 const Router = createRouter(() => ({
   home: () => HomeScreen,
@@ -40,19 +41,29 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
-export default class paparazziClient extends Component {
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Paparazzi base
-          </Text>
-        </View>
+        <NavigationProvider router={Router}>
+          <StackNavigation initialRoute={Router.getRoute('login')} />
+        </NavigationProvider>
       </Provider>
     );
   }
 }
+
+// export default class paparazziClient extends Component {
+//   render() {
+//     return (
+//         <View style={styles.container}>
+//           <Text style={styles.welcome}>
+//             Paparazzi base
+//           </Text>
+//         </View>
+//     );
+//   }
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -73,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('paparazziClient', () => paparazziClient);
+AppRegistry.registerComponent('paparazziClient', () => App);
