@@ -16,6 +16,25 @@ import { connect, Provider } from 'react-redux';
 import rootReducer from './src/reducers';
 import thunk from 'redux-thunk';
 
+/* Views */
+import { homeScreen } from './src/components/views/homeScreen'
+import { profileScreen } from './src/components/views/profileScreen'
+import { loginScreen } from './src/components/views/loginScreen'
+
+
+/* Navigiation */
+import {
+  createRouter,
+  NavigationProvider,
+  StackNavigation,
+} from '@exponent/ex-navigation';
+
+const Router = createRouter(() => ({
+  home: () => HomeScreen,
+  profile: () => ProfileScreen,
+  login: () => LoginScreen
+}));
+
 const store = createStore(
   rootReducer,
   applyMiddleware(thunk)
