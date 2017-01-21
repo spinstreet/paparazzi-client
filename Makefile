@@ -5,4 +5,4 @@ start:
 	react-native start
 
 setup:
-	startUp
+	npm install
