@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 
-class ProfileScreen extends React.Component {
+class LoginScreen extends React.Component {
   static route = {
     navigationBar: {
       title: 'Login',
@@ -28,3 +28,5 @@ class ProfileScreen extends React.Component {
     this.props.naviation
   }
 }
+
+export default LoginScreen

@@ -28,3 +28,6 @@ class ProfileScreen extends React.Component {
     this.props.naviation
   }
 }
+
+
+export default ProfileScreen
