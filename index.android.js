@@ -38,7 +38,9 @@ const Router = createRouter(() => ({
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk)
+  applyMiddleware(
+    thunk
+  )
 );
 
 class App extends Component {
