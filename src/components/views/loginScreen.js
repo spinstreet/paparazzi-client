@@ -15,18 +15,20 @@ class LoginScreen extends React.Component {
 
   render() {
     return (
-      <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+      <View style={styles.container}>
         <Text>ProfileScreen!</Text>
-        <Text onPress={this._goBackHome}>
-          Go back home
-        </Text>
       </View>
     )
   }
-
-  _goBackHome = () => {
-    this.props.naviation
-  }
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 
 export default LoginScreen
