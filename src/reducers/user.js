@@ -13,4 +13,4 @@ const user = (state = init, action: any = {}) => {
   }
 };
 
-export default ui;
+export default user;
